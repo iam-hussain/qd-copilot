@@ -1,5 +1,5 @@
 import * as z from "zod";
-import providers from "./provider";
+import providers from "./providers";
 
 const { string, number } = providers;
 

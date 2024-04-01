@@ -1,1 +1,5 @@
-export * from "./validations";
+import { validationMessages } from "./validation/handlers";
+
+export default {
+  validationMessages,
+};

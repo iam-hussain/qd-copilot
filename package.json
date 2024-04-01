@@ -1,20 +1,26 @@
 {
   "name": "qd-app-copilot",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "A support lib for quick dine",
   "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.js"
+    },
+    "./validation": "./lib/validations/index.js"
+  },
   "files": [
     "lib",
     "esm",
     "src"
   ],
   "scripts": {
-    "clean": "rimraf lib esm",
+    "clean": "rimraf lib",
     "prebuild": "npm run clean",
-    "build:cjs": "tsc --module commonjs --outDir lib",
-    "build:esm": "tsc --target es2018 --outDir esm",
-    "build": "npm run build:esm && npm run build:cjs",
+    "build": "tsc",
     "publish": "npm publish --access public",
+    "patch": "npm version --patch && git push --follow-tags",
     "release-dev": "npm version prerelease --preid=dev && npm publish --tag=dev",
     "preversion": "npm run build",
     "postversion": "git push --follow-tags"
@@ -35,10 +41,10 @@
   },
   "homepage": "https://github.com/iam-hussain/qd-copilot#readme",
   "devDependencies": {
+    "rimraf": "^5.0.5",
     "typescript": "^5.4.3"
   },
   "dependencies": {
-    "rimraf": "^5.0.5",
     "zod": "^3.22.4"
   }
 }

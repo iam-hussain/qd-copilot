@@ -1,21 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "moduleResolution": "node", // don't have to import actual filenames, can import extensionless files
+    "target": "ESNext",
+    "moduleResolution": "NodeNext", // don't have to import actual filenames, can import extensionless files
     "declaration": true, // generate .d.ts files
     "sourceMap": true, // generate source map
-    "outDir": "dist", // output compiled js, d.ts, and source map to dist folder
-
-    "esModuleInterop": true,
-    "declarationMap": true,
-    "emitDeclarationOnly": true,
+    "outDir": "lib", // output compiled js, d.ts, and source map to dist folder
     "lib": ["dom", "es2020", "es2018.promise", "ESNext.Intl"],
-    "module": "commonjs",
-    // Enhance strictness.
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
+    "module": "NodeNext",
     "strict": true
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["./dist"]
+  "exclude": ["./lib"]
 }

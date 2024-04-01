@@ -1,5 +1,5 @@
 import * as z from "zod";
-import { validationMessages } from "./handler";
+import { validationMessages } from "./handlers";
 
 const number = (options?: { min?: number; max?: number }) => {
   let numberSchema = z.number({
