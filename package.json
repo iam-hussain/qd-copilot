@@ -1,0 +1,32 @@
+{
+  "name": "qd-copilot",
+  "version": "1.0.1-dev.0",
+  "description": "A support lib for quick dine",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "publish": "npm publish",
+    "release-dev": "npm version prerelease --preid=dev && npm publish --tag=dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iam-hussain/qd-copilot.git"
+  },
+  "keywords": [
+    "copilot",
+    "lib",
+    "package"
+  ],
+  "author": "iam-hussain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iam-hussain/qd-copilot/issues"
+  },
+  "homepage": "https://github.com/iam-hussain/qd-copilot#readme",
+  "devDependencies": {
+    "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "zod": "^3.22.4"
+  }
+}
