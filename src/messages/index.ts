@@ -27,7 +27,7 @@ export const validationErrorResponse = (
       {
         validation,
         code,
-        message,
+        message: messages[message],
         path: [],
       },
     ],
@@ -47,7 +47,7 @@ export const manyValidationErrorResponse = (
     issues: items.map(({ validation, message, code }) => ({
       validation,
       code: code || 'custom',
-      message,
+      message: messages[message],
       path: [],
     })),
     name: 'ZodError',
@@ -69,8 +69,9 @@ export const formValidationSetter = (
       | undefined
   ) => void
 ) => {
-  if (error?.name === 'ZodError') {
-    const items = (error?.issues || []) as {
+  const { name, issues } = error?.response?.data || {};
+  if (name === 'ZodError') {
+    const items = (issues || []) as {
       validation: string;
       message: string;
       code: string;
