@@ -1,6 +1,6 @@
 {
-  "name": "@qd-service/qd-copilot",
-  "version": "1.0.0",
+  "name": "@iam-hussain/qd-copilot",
+  "version": "1.0.1",
   "description": "A support lib for quick dine",
   "main": "./lib/index.js",
   "exports": {
@@ -19,7 +19,6 @@
     "clean": "rimraf lib",
     "prebuild": "npm run clean",
     "build": "tsc",
-    "publish": "tsc && npm publish",
     "patch": "npm version --patch && git push --follow-tags",
     "release-dev": "tsc && npm version prerelease --preid=dev && npm publish --tag=dev"
   },
@@ -47,5 +46,9 @@
   },
   "dependencies": {
     "zod": "^3.22.4"
+  },
+  "types": "./lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
   }
 }
