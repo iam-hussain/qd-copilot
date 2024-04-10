@@ -41,6 +41,7 @@
   },
   "homepage": "https://github.com/iam-hussain/qd-copilot#readme",
   "devDependencies": {
+    "@types/node": "^20.12.7",
     "release-it": "^17.1.1",
     "rimraf": "^5.0.5",
     "typescript": "^5.4.3"

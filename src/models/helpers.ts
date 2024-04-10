@@ -1,9 +1,9 @@
-import * as z from "zod";
-import { validationMessages } from "./handlers";
+import { z } from "zod";
+import { messages } from "../messages";
 
 const number = (options?: { min?: number; max?: number }) => {
   let numberSchema = z.number({
-    required_error: validationMessages.required,
+    required_error: messages.required,
   });
 
   if (typeof options?.min === "number" && options?.min >= 0) {
@@ -26,7 +26,7 @@ const string = (options?: {
   optional?: boolean;
 }) => {
   let stringSchema = z.string({
-    required_error: validationMessages.required,
+    required_error: messages.required,
   });
 
   if (!options || !Object.keys(options).length) {
@@ -35,7 +35,7 @@ const string = (options?: {
 
   if (options.type === "email") {
     stringSchema = stringSchema.email({
-      message: validationMessages.valid_email,
+      message: messages.valid_email,
     });
   }
 
@@ -46,47 +46,47 @@ const string = (options?: {
   if (options.length === "4-20") {
     stringSchema = stringSchema
       .min(4, {
-        message: validationMessages.length4to20,
+        message: messages.length4to20,
       })
       .max(20, {
-        message: validationMessages.length4to20,
+        message: messages.length4to20,
       });
   }
 
   if (options.length === "2-20") {
     stringSchema = stringSchema
       .min(2, {
-        message: validationMessages.length2to20,
+        message: messages.length2to20,
       })
       .max(20, {
-        message: validationMessages.length2to20,
+        message: messages.length2to20,
       });
   }
 
   if (options.length === "2-40") {
     stringSchema = stringSchema
       .min(2, {
-        message: validationMessages.length2to40,
+        message: messages.length2to40,
       })
       .max(40, {
-        message: validationMessages.length2to40,
+        message: messages.length2to40,
       });
   }
 
   if (options.length === "6-20") {
     stringSchema = stringSchema
       .min(6, {
-        message: validationMessages.length6to20,
+        message: messages.length6to20,
       })
       .max(20, {
-        message: validationMessages.length6to20,
+        message: messages.length6to20,
       });
   }
 
   if (options.type === "username") {
     stringSchema = stringSchema.regex(
       new RegExp(/^(?!-*\-\-)(?!-*\-$)[^\W][\w-]{0,20}$/),
-      validationMessages.username_regex
+      messages.username_regex
     );
   }
 

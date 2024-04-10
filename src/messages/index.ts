@@ -1,4 +1,4 @@
-export const validationMessages = {
+export const messages = {
   required: "Required field",
   email_taken: "Email already taken",
   username_taken: "Username already used",
@@ -16,12 +16,12 @@ export const validationMessages = {
   username_regex: "Use letters, numbers, underscores, and hyphens", // "Can contain letters, numbers, underscores, and hyphens (between)",
 };
 
-export type ValidationMapperConfigType = {
+export type MessageMapperConfigType = {
   key: string;
-  value: keyof typeof validationMessages;
+  value: keyof typeof messages;
 };
 
-const validationMapperConfig: { [key: string]: ValidationMapperConfigType } = {
+const mapperConfig: { [key: string]: MessageMapperConfigType } = {
   USER_NOT_FOUND: {
     key: "email",
     value: "user_not_exist",
@@ -36,14 +36,14 @@ const validationMapperConfig: { [key: string]: ValidationMapperConfigType } = {
   },
 };
 
-export const getValidationMessage = (input: string, defaultKey = "default") => {
-  const { key, value } = validationMapperConfig[input] || {};
+export const getMessageText = (input: string, defaultKey = "default") => {
+  const { key, value } = mapperConfig[input] || {};
 
   return {
     name: key || defaultKey,
     error: {
       type: "custom",
-      message: validationMessages[value] || validationMessages.unexpected,
+      message: mapperConfig[value] || mapperConfig.unexpected,
     },
   };
 };

@@ -1,4 +1,3 @@
-import * as validator from "./validation";
-export * from "./validation";
-export { validator };
-export default { validator };
+import * as model from "./models";
+export { model };
+export default { model };
