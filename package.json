@@ -1,14 +1,14 @@
 {
-  "name": "qd-app-copilot",
-  "version": "1.0.7",
+  "name": "@qd-service/qd-copilot",
+  "version": "1.0.15",
   "description": "A support lib for quick dine",
-  "main": "lib/index.js",
+  "main": "./lib/index.js",
   "exports": {
     ".": {
       "import": "./lib/index.js",
       "require": "./lib/index.js"
     },
-    "./validation": "./lib/validations/index.js"
+    "./validation": "./lib/validation/index.js"
   },
   "files": [
     "lib",
@@ -19,15 +19,16 @@
     "clean": "rimraf lib",
     "prebuild": "npm run clean",
     "build": "tsc",
-    "publish": "npm publish --access public",
+    "publish": "tsc && npm publish",
     "patch": "npm version --patch && git push --follow-tags",
-    "release-dev": "npm version prerelease --preid=dev && npm publish --tag=dev",
-    "preversion": "npm run build",
-    "postversion": "git push --follow-tags"
+    "release-dev": "tsc && npm version prerelease --preid=dev && npm publish --tag=dev"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/iam-hussain/qd-copilot.git"
+  },
+  "publishConfig": {
+    "@iam-hussain:registry": "https://npm.pkg.github.com"
   },
   "keywords": [
     "copilot",
