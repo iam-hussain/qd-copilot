@@ -20,7 +20,9 @@
     "prebuild": "npm run clean",
     "build": "tsc",
     "patch": "npm version --patch && git push --follow-tags",
-    "release": "release-it"
+    "release": "release-it",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -47,6 +49,14 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-simple-import-sort": "^12.0.0",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
     "zod": "^3.22.4"
   },
   "types": "./lib/index.d.ts",

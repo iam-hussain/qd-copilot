@@ -1,6 +1,7 @@
-import { z } from "zod";
-import { IdObjectSchema } from "./common";
-import { number, string } from "./helpers";
+import { z } from 'zod';
+
+import { IdObjectSchema } from './common';
+import { number, string } from './helpers';
 
 export type CategoryCreateSchemaType = z.infer<typeof CategoryCreateSchema>;
 
@@ -18,17 +19,13 @@ export const CategoryUpdateSchema = z.object({
   position: number({ min: 0, max: 10000, optional: true }),
 });
 
-export type CategoryCreateReqSchemaType = z.infer<
-  typeof CategoryCreateReqSchema
->;
+export type CategoryCreateReqSchemaType = z.infer<typeof CategoryCreateReqSchema>;
 
 export const CategoryCreateReqSchema = z.object({
   body: CategoryCreateSchema,
 });
 
-export type CategoryUpdateReqSchemaType = z.infer<
-  typeof CategoryUpdateReqSchema
->;
+export type CategoryUpdateReqSchemaType = z.infer<typeof CategoryUpdateReqSchema>;
 
 export const CategoryUpdateReqSchema = z.object({
   body: CategoryUpdateSchema,

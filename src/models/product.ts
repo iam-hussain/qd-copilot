@@ -1,6 +1,7 @@
-import { z } from "zod";
-import { IdObjectSchema, PRODUCT_TYPE } from "./common";
-import { number, string } from "./helpers";
+import { z } from 'zod';
+
+import { IdObjectSchema, PRODUCT_TYPE } from './common';
+import { number, string } from './helpers';
 
 export type ProductCreateSchemaType = z.infer<typeof ProductCreateSchema>;
 

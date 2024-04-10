@@ -4,5 +4,12 @@
   },
   "github": {
     "release": true
+  },
+  "hooks": {
+    "before:init": ["npm run lint:fix"],
+    "after:my-plugin:bump": "./bin/my-script.sh",
+    "after:bump": "npm run build",
+    "after:git:release": "echo After git push, before github release",
+    "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
   }
 }

@@ -1,20 +1,17 @@
-import { z } from "zod";
-import { messages } from "../messages";
+import { z } from 'zod';
 
-export const number = (options?: {
-  min?: number;
-  max?: number;
-  optional?: boolean;
-}) => {
+import { messages } from '../messages';
+
+export const number = (options?: { min?: number; max?: number; optional?: boolean }) => {
   let numberSchema = z.number({
     required_error: messages.required,
   });
 
-  if (typeof options?.min === "number" && options?.min >= 0) {
+  if (typeof options?.min === 'number' && options?.min >= 0) {
     numberSchema = numberSchema.min(options.min);
   }
 
-  if (typeof options?.max === "number" && options?.max >= 0) {
+  if (typeof options?.max === 'number' && options?.max >= 0) {
     numberSchema = numberSchema.max(options.max);
   }
 
@@ -23,14 +20,14 @@ export const number = (options?: {
   }
 
   return z.preprocess((val) => {
-    if (typeof val === "string") return Number(val);
+    if (typeof val === 'string') return Number(val);
     return val;
   }, numberSchema);
 };
 
 export const string = (options?: {
-  type?: "email" | "username" | "";
-  length?: "2-20" | "4-20" | "2-40" | "6-20";
+  type?: 'email' | 'username' | '';
+  length?: '2-20' | '4-20' | '2-40' | '6-20';
   optional?: boolean;
 }) => {
   let stringSchema = z.string({
@@ -41,7 +38,7 @@ export const string = (options?: {
     return stringSchema;
   }
 
-  if (options.type === "email") {
+  if (options.type === 'email') {
     stringSchema = stringSchema.email({
       message: messages.valid_email,
     });
@@ -51,7 +48,7 @@ export const string = (options?: {
     stringSchema = stringSchema.optional() as any;
   }
 
-  if (options.length === "4-20") {
+  if (options.length === '4-20') {
     stringSchema = stringSchema
       .min(4, {
         message: messages.length4to20,
@@ -61,7 +58,7 @@ export const string = (options?: {
       });
   }
 
-  if (options.length === "2-20") {
+  if (options.length === '2-20') {
     stringSchema = stringSchema
       .min(2, {
         message: messages.length2to20,
@@ -71,7 +68,7 @@ export const string = (options?: {
       });
   }
 
-  if (options.length === "2-40") {
+  if (options.length === '2-40') {
     stringSchema = stringSchema
       .min(2, {
         message: messages.length2to40,
@@ -81,7 +78,7 @@ export const string = (options?: {
       });
   }
 
-  if (options.length === "6-20") {
+  if (options.length === '6-20') {
     stringSchema = stringSchema
       .min(6, {
         message: messages.length6to20,
@@ -91,11 +88,8 @@ export const string = (options?: {
       });
   }
 
-  if (options.type === "username") {
-    stringSchema = stringSchema.regex(
-      new RegExp(/^(?!-*\-\-)(?!-*\-$)[^\W][\w-]{0,20}$/),
-      messages.username_regex
-    );
+  if (options.type === 'username') {
+    stringSchema = stringSchema.regex(new RegExp(/^(?!-*\\-\\-)(?!-*\\-$)[^\W][\w-]{0,20}$/), messages.username_regex);
   }
 
   return stringSchema;

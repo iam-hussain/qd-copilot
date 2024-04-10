@@ -1,6 +1,7 @@
-import { z } from "zod";
-import { CALC_VALUE_TYPE } from "./common";
-import { number, string } from "./helpers";
+import { z } from 'zod';
+
+import { CALC_VALUE_TYPE } from './common';
+import { number, string } from './helpers';
 
 export type FeeSchemaType = z.infer<typeof FeeSchema>;
 export const FeeSchema = z.object({
