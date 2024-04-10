@@ -16,6 +16,44 @@ export const messages = {
   username_regex: 'Use letters, numbers, underscores, and hyphens', // "Can contain letters, numbers, underscores, and hyphens (between)",
 };
 
+export const validationErrorResponse = (
+  validation: string,
+  message: keyof typeof messages,
+  code: string = 'custom'
+) => {
+  return {
+    code: 400,
+    issues: [
+      {
+        validation,
+        code,
+        message,
+        path: [],
+      },
+    ],
+    name: 'ZodError',
+  };
+};
+
+export const manyValidationErrorResponse = (
+  items: {
+    validation: string;
+    message: keyof typeof messages;
+    code?: string;
+  }[]
+) => {
+  return {
+    code: 400,
+    issues: items.map(({ validation, message, code }) => ({
+      validation,
+      code: code || 'custom',
+      message,
+      path: [],
+    })),
+    name: 'ZodError',
+  };
+};
+
 export const formValidationSetter = (
   error: any,
   setError: (
