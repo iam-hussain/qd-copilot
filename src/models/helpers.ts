@@ -1,7 +1,11 @@
 import { z } from "zod";
 import { messages } from "../messages";
 
-const number = (options?: { min?: number; max?: number }) => {
+export const number = (options?: {
+  min?: number;
+  max?: number;
+  optional?: boolean;
+}) => {
   let numberSchema = z.number({
     required_error: messages.required,
   });
@@ -14,13 +18,17 @@ const number = (options?: { min?: number; max?: number }) => {
     numberSchema = numberSchema.max(options.max);
   }
 
+  if (options?.optional) {
+    numberSchema = numberSchema.optional() as any;
+  }
+
   return z.preprocess((val) => {
     if (typeof val === "string") return Number(val);
     return val;
   }, numberSchema);
 };
 
-const string = (options?: {
+export const string = (options?: {
   type?: "email" | "username" | "";
   length?: "2-20" | "4-20" | "2-40" | "6-20";
   optional?: boolean;
@@ -91,9 +99,4 @@ const string = (options?: {
   }
 
   return stringSchema;
-};
-
-export default {
-  number,
-  string,
 };

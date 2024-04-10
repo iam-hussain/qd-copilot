@@ -3,18 +3,19 @@ import { z } from "zod";
 import { ORDER_STATUS, ORDER_TYPE } from "./common";
 import { ItemCreateSchema } from "./items";
 import { FeesSchema, TableSchema } from "./store";
+import { number, string } from "./helpers";
 
 export type OrderUpsertSchemaType = z.infer<typeof OrderUpsertSchema>;
 
 export const OrderUpsertSchema = z.object({
-  shortId: z.string().optional(),
+  shortId: string({ optional: true }),
   type: ORDER_TYPE.optional(),
   status: ORDER_STATUS.optional(),
-  note: z.string().optional(),
-  customerId: z.string().optional(),
+  note: string({ optional: true }),
+  customerId: string({ optional: true }),
   items: z.array(ItemCreateSchema).optional(),
-  completedAt: z.string().optional(),
-  deliveredAt: z.string().optional(),
+  completedAt: string({ optional: true }),
+  deliveredAt: string({ optional: true }),
   fees: FeesSchema,
   table: TableSchema,
   taxes: FeesSchema,
@@ -29,10 +30,10 @@ export const OrderUpsertReqSchema = z.object({
 export type GetOrdersSchemaType = z.infer<typeof GetOrdersSchema>;
 
 export const GetOrdersSchema = z.object({
-  date: z.string().optional(),
-  skip: z.number().optional(),
-  take: z.number().optional(),
-  cursor: z.string().optional(),
+  date: string({ optional: true }),
+  skip: number({ min: 0, max: 10000, optional: true }),
+  take: number({ min: 0, max: 10000, optional: true }),
+  cursor: string({ optional: true }),
   type: ORDER_TYPE.optional(),
   status: ORDER_STATUS.optional(),
   types: z.array(ORDER_TYPE).optional(),

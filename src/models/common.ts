@@ -1,6 +1,7 @@
 import { z } from "zod";
+import { string } from "./helpers";
 
-export const IdObjectSchema = z.object({ id: z.string() });
+export const IdObjectSchema = z.object({ id: string() });
 
 export const ParamIdReqSchema = z.object({
   params: IdObjectSchema,

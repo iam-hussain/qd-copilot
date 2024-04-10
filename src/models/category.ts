@@ -1,20 +1,21 @@
 import { z } from "zod";
 import { IdObjectSchema } from "./common";
+import { number, string } from "./helpers";
 
 export type CategoryCreateSchemaType = z.infer<typeof CategoryCreateSchema>;
 
 export const CategoryCreateSchema = z.object({
-  name: z.string(),
-  deck: z.string().optional(),
-  position: z.number().optional(),
+  name: string(),
+  deck: string({ optional: true }),
+  position: number({ min: 0, max: 10000, optional: true }),
 });
 
 export type CategoryUpdateSchemaType = z.infer<typeof CategoryUpdateSchema>;
 
 export const CategoryUpdateSchema = z.object({
-  name: z.string().optional(),
-  deck: z.string().optional(),
-  position: z.number().optional(),
+  name: string({ optional: true }),
+  deck: string({ optional: true }),
+  position: number({ min: 0, max: 10000, optional: true }),
 });
 
 export type CategoryCreateReqSchemaType = z.infer<

@@ -1,14 +1,15 @@
 import { z } from "zod";
 import { IdObjectSchema, PRODUCT_TYPE } from "./common";
+import { number, string } from "./helpers";
 
 export type ProductCreateSchemaType = z.infer<typeof ProductCreateSchema>;
 
 export const ProductCreateSchema = z.object({
-  name: z.string(),
-  deck: z.string().optional(),
+  name: string(),
+  deck: string({ optional: true }),
   type: PRODUCT_TYPE.optional(),
-  price: z.number(),
-  categoryId: z.string(),
+  price: number({ min: 0, max: 10000 }),
+  categoryId: string(),
 });
 
 export type ProductCreateReqSchemaType = z.infer<typeof ProductCreateReqSchema>;
@@ -20,11 +21,11 @@ export const ProductCreateReqSchema = z.object({
 export type ProductUpdateSchemaType = z.infer<typeof ProductUpdateSchema>;
 
 export const ProductUpdateSchema = z.object({
-  name: z.string().optional(),
-  deck: z.string().optional(),
-  price: z.number().optional(),
+  name: string({ optional: true }),
+  deck: string({ optional: true }),
+  price: number({ min: 1, max: 10000, optional: true }),
   type: PRODUCT_TYPE.optional(),
-  categoryId: z.string().optional(),
+  categoryId: string({ optional: true }),
 });
 export type ProductUpdateReqSchemaType = z.infer<typeof ProductUpdateReqSchema>;
 
