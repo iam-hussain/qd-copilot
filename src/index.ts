@@ -1,3 +1,4 @@
+export * from './messages/index';
 export * from './models/authentication';
 export * from './models/category';
 export * from './models/common';

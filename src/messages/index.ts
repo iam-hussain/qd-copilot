@@ -16,34 +16,38 @@ export const messages = {
   username_regex: 'Use letters, numbers, underscores, and hyphens', // "Can contain letters, numbers, underscores, and hyphens (between)",
 };
 
-export type MessageMapperConfigType = {
-  key: string;
-  value: keyof typeof messages;
-};
-
-const mapperConfig: { [key: string]: MessageMapperConfigType } = {
-  USER_NOT_FOUND: {
-    key: 'email',
-    value: 'user_not_exist',
-  },
-  NO_PASSWORD_FOUND: {
-    key: 'password',
-    value: 'password_not_added',
-  },
-  INVALID_PASSWORD: {
-    key: 'password',
-    value: 'password_incorrect',
-  },
-};
-
-export const getMessageText = (input: string, defaultKey = 'default') => {
-  const { key, value } = mapperConfig[input] || {};
-
-  return {
-    name: key || defaultKey,
+export const formValidationSetter = (
+  error: any,
+  setError: (
+    name: any,
     error: {
-      type: 'custom',
-      message: mapperConfig[value] || mapperConfig.unexpected,
+      type: string;
+      message: string;
     },
-  };
+    options?:
+      | {
+          shouldFocus: boolean;
+        }
+      | undefined
+  ) => void
+) => {
+  if (error?.name === 'ZodError') {
+    const items = (error?.issues || []) as {
+      validation: string;
+      message: string;
+      code: string;
+    }[];
+    items.forEach((e) => {
+      return setError(
+        e.validation,
+        {
+          type: e.code,
+          message: e.message,
+        },
+        {
+          shouldFocus: items.length === 1,
+        }
+      );
+    });
+  }
 };
