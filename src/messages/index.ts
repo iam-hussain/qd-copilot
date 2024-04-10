@@ -49,5 +49,7 @@ export const formValidationSetter = (
         }
       );
     });
+    return items;
   }
+  return [];
 };
