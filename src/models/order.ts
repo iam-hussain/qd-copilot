@@ -13,7 +13,7 @@ export const OrderUpsertSchema = z.object({
   status: ORDER_STATUS.optional(),
   note: string({ optional: true }),
   customerId: string({ optional: true }),
-  items: z.array(ItemCreateSchema).optional(),
+  items: z.array(ItemCreateSchema),
   completedAt: string({ optional: true }),
   deliveredAt: string({ optional: true }),
   fees: FeesSchema,
