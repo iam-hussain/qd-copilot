@@ -6,7 +6,7 @@ import { number, string } from './helpers';
 export type ItemCreateSchemaType = z.infer<typeof ItemCreateSchema>;
 
 export const ItemCreateSchema = z.object({
-  id: string({ optional: true }),
+  // id: string({ optional: true }),
   title: string({ optional: true }),
   note: string({ optional: true }),
   price: number({ min: 0, max: 10000, optional: true }),
