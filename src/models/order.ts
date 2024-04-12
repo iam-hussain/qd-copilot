@@ -17,7 +17,7 @@ export const OrderUpsertSchema = z.object({
   completedAt: string({ optional: true }),
   deliveredAt: string({ optional: true }),
   fees: FeesSchema,
-  table: TableSchema,
+  table: TableSchema.optional(),
   taxes: FeesSchema,
 });
 
