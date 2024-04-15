@@ -6,6 +6,7 @@ export type FeatureFlagsType = {
   enableExpressOrder: boolean;
   showUpdatedDate: boolean;
   enableTables: boolean;
+  enableCustomerAdding: boolean;
 };
 
 export const defaultFeatureFlags: FeatureFlagsType = {
@@ -14,6 +15,7 @@ export const defaultFeatureFlags: FeatureFlagsType = {
   enableExpressOrder: false,
   showUpdatedDate: false,
   enableTables: false,
+  enableCustomerAdding: false,
 };
 
 export type FeatureFlagLabelType = {
@@ -43,6 +45,16 @@ export const featureFlagLabel: FeatureFlagLabelType[] = [
     label: 'Show Updated Date Instead of Created Date in the POS Screen',
     info: 'Show Updated Date: Opt for this option to display the updated date of products or transactions instead of their creation date on the Point of Sale (POS) screen, providing users with the latest information.',
   },
+  {
+    key: 'enableTables',
+    label: 'Enable Table Selection in the POS Ordering',
+    info: 'When enabled, customers can select tables for dine-in orders directly within the POS system, facilitating table service management.<br /> When disabled, table selection functionality will not be available, suitable for businesses without table service.',
+  },
+  {
+    key: 'enableCustomerAdding',
+    label: 'Enable Customer Details Adding on the Order Details',
+    info: 'When enabled, users can add customer details, such as name and contact information, to the order for better customer management and tracking. <br />When disabled, the option to add customer details to orders will not be available.',
+  },
 ];
 
 export const getFeatureFlags = (input: any): FeatureFlagsType => {
@@ -51,7 +63,7 @@ export const getFeatureFlags = (input: any): FeatureFlagsType => {
 };
 
 export const mergeFeatureFlags = (a: any, b: any): FeatureFlagsType => {
-  return getFeatureFlags(_.merge(defaultFeatureFlags, a, b));
+  return _.merge(defaultFeatureFlags, a, b);
 };
 
 export type FeatureFlagFormType = {
