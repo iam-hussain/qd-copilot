@@ -9,11 +9,11 @@ export type FeatureFlagsType = {
 };
 
 export const defaultFeatureFlags: FeatureFlagsType = {
-  enableKDS: true,
+  enableKDS: false,
   showProductsImage: false,
-  enableExpressOrder: true,
-  showUpdatedDate: true,
-  enableTables: true,
+  enableExpressOrder: false,
+  showUpdatedDate: false,
+  enableTables: false,
 };
 
 export type FeatureFlagLabelType = {
@@ -51,7 +51,7 @@ export const getFeatureFlags = (input: any): FeatureFlagsType => {
 };
 
 export const mergeFeatureFlags = (a: any, b: any): FeatureFlagsType => {
-  return _.merge(defaultFeatureFlags, a, b);
+  return getFeatureFlags(_.merge(defaultFeatureFlags, a, b));
 };
 
 export type FeatureFlagFormType = {
