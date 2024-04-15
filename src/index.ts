@@ -1,3 +1,4 @@
+export * from './configs/feature-flags';
 export * from './messages/index';
 export * from './models/authentication';
 export * from './models/category';
