@@ -47,7 +47,11 @@ export const featureFlagLabel: FeatureFlagLabelType[] = [
 
 export const getFeatureFlags = (input: any): FeatureFlagsType => {
   const items = _.pick(input, Object.keys(defaultFeatureFlags));
-  return _.mergeWith(items, defaultFeatureFlags);
+  return _.merge(defaultFeatureFlags, items);
+};
+
+export const mergeFeatureFlags = (a: any, b: any): FeatureFlagsType => {
+  return _.merge(defaultFeatureFlags, a, b);
 };
 
 export type FeatureFlagFormType = {
