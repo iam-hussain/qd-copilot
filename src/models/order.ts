@@ -19,7 +19,7 @@ export const OrderUpsertSchema = z.object({
   fees: FeesSchema,
   table: TableSchema.optional(),
   taxes: FeesSchema,
-  removeDraft: z.boolean().optional(),
+  removeDraftItems: z.boolean().optional(),
 });
 
 export type OrderUpsertReqSchemaType = z.infer<typeof OrderUpsertReqSchema>;
