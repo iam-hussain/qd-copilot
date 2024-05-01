@@ -69,7 +69,7 @@ export const formValidationSetter = (
       | undefined
   ) => void
 ) => {
-  const { name, issues } = error?.response?.data || {};
+  const { name, issues } = error || {};
   if (name === 'ZodError') {
     const items = (issues || []) as {
       validation: string;
