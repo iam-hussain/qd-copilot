@@ -11,6 +11,7 @@ export const ProductCreateSchema = z.object({
   type: PRODUCT_TYPE.optional(),
   price: number({ min: 0, max: 10000 }),
   categoryId: string(),
+  kitchenCategory: string({ optional: true }),
 });
 
 export type ProductCreateReqSchemaType = z.infer<typeof ProductCreateReqSchema>;
@@ -27,6 +28,7 @@ export const ProductUpdateSchema = z.object({
   price: number({ min: 1, max: 10000, optional: true }),
   type: PRODUCT_TYPE.optional(),
   categoryId: string({ optional: true }),
+  kitchenCategory: string({ optional: true }),
 });
 export type ProductUpdateReqSchemaType = z.infer<typeof ProductUpdateReqSchema>;
 
