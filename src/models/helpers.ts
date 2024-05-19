@@ -100,4 +100,4 @@ export const date = z.preprocess((arg) => {
     return new Date(arg);
   }
   return arg;
-}, z.date().optional());
+}, z.string().datetime().optional());
