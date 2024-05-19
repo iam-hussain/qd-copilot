@@ -64,13 +64,5 @@
   "types": "./lib/index.d.ts",
   "directories": {
     "lib": "lib"
-  },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: release v${version}"
-    },
-    "github": {
-      "release": true
-    }
   }
 }
