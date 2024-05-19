@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import { IdObjectSchema, PRODUCT_TYPE } from './common';
-import { number, string } from './helpers';
+import { date, number, string } from './helpers';
 
 export type ItemCreateSchemaType = z.infer<typeof ItemCreateSchema>;
 
@@ -27,10 +27,10 @@ export const ItemUpdateSchema = z.object({
   quantity: z.number().optional(),
   total: z.number().optional(),
   position: z.number().optional(),
-  placeAt: z.date().optional(),
-  placedAt: z.date().optional(),
-  acceptedAt: z.date().optional(),
-  prepared: z.date().optional(),
+  placeAt: date,
+  placedAt: date,
+  acceptedAt: date,
+  preparedAt: date,
   status: z.enum(['DRAFT', 'SCHEDULED', 'PLACED', 'ACCEPTED', 'PROGRESS', 'PREPARED']).optional(),
   productId: z.string().optional(),
   orderId: z.string().optional(),

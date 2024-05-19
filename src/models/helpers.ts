@@ -94,3 +94,10 @@ export const string = (options?: {
 
   return stringSchema;
 };
+
+export const date = z.preprocess((arg) => {
+  if (typeof arg === 'string') {
+    return new Date(arg);
+  }
+  return arg;
+}, z.date().optional());
