@@ -14,7 +14,7 @@ export const ItemCreateSchema = z.object({
   quantity: number({ min: 0, max: 10000 }),
   position: number({ min: 0, max: 10000, optional: true }),
   productId: string(),
-  status: z.enum(['DRAFT', 'SCHEDULED', 'PLACED', 'ACCEPTED', 'PROGRESS', 'PREPARED']).optional(),
+  status: z.enum(['DRAFT', 'SCHEDULED', 'PLACED', 'ACCEPTED', 'PREPARED']).optional(),
 });
 
 export type ItemUpdateSchemaType = z.infer<typeof ItemUpdateSchema>;
@@ -31,7 +31,7 @@ export const ItemUpdateSchema = z.object({
   placedAt: date,
   acceptedAt: date,
   preparedAt: date,
-  status: z.enum(['DRAFT', 'SCHEDULED', 'PLACED', 'ACCEPTED', 'PROGRESS', 'PREPARED']).optional(),
+  status: z.enum(['DRAFT', 'SCHEDULED', 'PLACED', 'ACCEPTED', 'PREPARED']).optional(),
   productId: z.string().optional(),
   orderId: z.string().optional(),
   billId: z.string().optional(),

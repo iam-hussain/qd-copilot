@@ -8,4 +8,5 @@ export * from './models/items';
 export * from './models/order';
 export * from './models/product';
 export * from './models/store';
+export * from './models/token';
 export * from './utils/index';
