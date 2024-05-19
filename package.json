@@ -1,6 +1,6 @@
 {
   "name": "@iam-hussain/qd-copilot",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A support lib for quick dine",
   "main": "./lib/index.js",
   "exports": {
