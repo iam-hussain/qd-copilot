@@ -19,7 +19,7 @@ export const OrderUpsertSchema = z.object({
   fees: FeesSchema,
   table: TableSchema.optional(),
   taxes: FeesSchema,
-  keepDraftItems: z.boolean().optional(),
+  enableKitchenCategory: z.boolean().optional(),
 });
 
 export type OrderUpsertReqSchemaType = z.infer<typeof OrderUpsertReqSchema>;
