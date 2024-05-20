@@ -14,6 +14,7 @@ export const ItemCreateSchema = z.object({
   quantity: number({ min: 0, max: 10000 }),
   position: number({ min: 0, max: 10000, optional: true }),
   productId: string(),
+  kitchenCategoryId: z.string().optional(),
   status: z.enum(['DRAFT', 'SCHEDULED', 'PLACED', 'ACCEPTED', 'PREPARED']).optional(),
 });
 
@@ -33,6 +34,7 @@ export const ItemUpdateSchema = z.object({
   preparedAt: date,
   status: z.enum(['DRAFT', 'SCHEDULED', 'PLACED', 'ACCEPTED', 'PREPARED']).optional(),
   productId: z.string().optional(),
+  kitchenCategoryId: z.string().optional(),
   orderId: z.string().optional(),
   billId: z.string().optional(),
 });
