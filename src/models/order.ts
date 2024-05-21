@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import { ORDER_STATUS, ORDER_TYPE } from './common';
-import { number, string } from './helpers';
+import { dateStringOptional, number, string } from './helpers';
 import { ItemCreateSchema } from './items';
 import { FeesSchema, TableSchema } from './store';
 
@@ -14,8 +14,9 @@ export const OrderUpsertSchema = z.object({
   note: string({ optional: true }),
   customerId: string({ optional: true }),
   items: z.array(ItemCreateSchema),
-  completedAt: string({ optional: true }),
-  deliveredAt: string({ optional: true }),
+  completedAt: dateStringOptional,
+  deliveredAt: dateStringOptional,
+  scheduledAt: dateStringOptional,
   fees: FeesSchema,
   table: TableSchema.optional(),
   taxes: FeesSchema,

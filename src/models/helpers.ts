@@ -95,4 +95,6 @@ export const string = (options?: {
   return stringSchema;
 };
 
-export const date = z.string().datetime().optional();
+export const dateStringOptional = z.string().datetime().optional();
+
+export const dateString = z.string().datetime().optional();
