@@ -26,6 +26,7 @@ export const ItemUpdateSchema = z.object({
   price: z.number().optional(),
   quantity: z.number().optional(),
   total: z.number().optional(),
+  scheduledAt: dateStringOptional,
   placeAt: dateStringOptional,
   placedAt: dateStringOptional,
   acceptedAt: dateStringOptional,
