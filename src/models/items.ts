@@ -14,7 +14,6 @@ export const ItemCreateSchema = z.object({
   position: number({ min: 0, max: 10000, optional: true }),
   productId: string(),
   kitchenCategoryId: z.string().optional(),
-  status: z.enum(['DRAFT', 'SCHEDULED', 'PLACED', 'ACCEPTED', 'PREPARED']).optional(),
 });
 
 export type ItemUpdateSchemaType = z.infer<typeof ItemUpdateSchema>;
