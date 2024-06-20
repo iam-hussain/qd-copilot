@@ -68,10 +68,10 @@ export const formUnexpectedSetter = (
       | undefined
   ) => void
 ) => {
-    return setError('root', {
-      type: 'manual',
-      message: messages.unexpected
-    })
+  return setError('root', {
+    type: 'manual',
+    message: messages.unexpected,
+  });
 };
 
 export const formValidationSetter = (
