@@ -5,7 +5,7 @@ export const messages = {
   username_not_exist: 'Username does not exist',
   password_not_added: 'No password added to this account',
   password_incorrect: 'Password does not match',
-  unexpected: 'Unexpected error occurred',
+  unexpected: 'Unexpected error occurred.',
   user_not_exist: 'User not registered',
   valid_string: 'Must be a valid string',
   valid_email: 'Must be a valid email address',
@@ -54,6 +54,26 @@ export const manyValidationErrorResponse = (
   };
 };
 
+export const formUnexpectedSetter = (
+  setError: (
+    name: any,
+    error: {
+      type: string;
+      message: string;
+    },
+    options?:
+      | {
+          shouldFocus: boolean;
+        }
+      | undefined
+  ) => void
+) => {
+    return setError('root', {
+      type: 'manual',
+      message: messages.unexpected
+    })
+};
+
 export const formValidationSetter = (
   error: any,
   setError: (
@@ -89,6 +109,7 @@ export const formValidationSetter = (
       );
     });
     return items;
+  } else {
+    return formUnexpectedSetter(setError);
   }
-  return [];
 };
