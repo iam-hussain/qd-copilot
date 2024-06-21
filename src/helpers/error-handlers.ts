@@ -57,14 +57,16 @@ export const setUnexpectedFormError = (
 export const setFormValidationErrors = (
   error: any,
   setError: (
-    name: string,
+    name: any,
     error: {
       type: string;
       message: string;
     },
-    options?: {
-      shouldFocus: boolean;
-    }
+    options?:
+      | {
+          shouldFocus: boolean;
+        }
+      | undefined
   ) => void
 ) => {
   const { name, issues } = error || {};
