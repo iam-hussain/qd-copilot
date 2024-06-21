@@ -34,18 +34,18 @@ export const createManyValidationErrorResponse = (
   name: 'ZodError',
 });
 
-export const setUnexpectedFormError = (
-  setError: (
-    name: string,
-    error: {
-      type: string;
-      message: string;
-    },
-    options?: {
-      shouldFocus: boolean;
-    }
-  ) => void
-) => {
+type setError = (
+  name: any,
+  error: {
+    type: string;
+    message: string;
+  },
+  options?: {
+    shouldFocus: boolean;
+  }
+) => void;
+
+export const setUnexpectedFormError = (setError: setError) => {
   const errorData = {
     type: 'manual',
     message: messages.unexpected,
@@ -54,21 +54,7 @@ export const setUnexpectedFormError = (
   return errorData;
 };
 
-export const setFormValidationErrors = (
-  error: any,
-  setError: (
-    name: any,
-    error: {
-      type: string;
-      message: string;
-    },
-    options?:
-      | {
-          shouldFocus: boolean;
-        }
-      | undefined
-  ) => void
-) => {
+export const setFormValidationErrors = (error: any, setError: setError) => {
   const { name, issues } = error || {};
   if (name === 'ZodError') {
     const items = (issues || []) as {
