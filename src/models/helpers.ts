@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { messages } from '../messages';
+import { messages } from '../helpers/messages';
 
 export const number = (options?: { min?: number; max?: number; optional?: boolean }) => {
   let numberSchema = z.number({
