@@ -66,7 +66,7 @@ export const featureFlagLabel: FeatureFlagLabelType[] = [
 
 export const getFeatureFlags = (input: any): FeatureFlagsType => {
   const items = _.pick(input, Object.keys(defaultFeatureFlags));
-  return _.merge(defaultFeatureFlags, items);
+  return _.merge({ ...defaultFeatureFlags }, { ...items });
 };
 
 export const mergeFeatureFlags = (a: any, b: any): FeatureFlagsType => {
